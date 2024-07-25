@@ -1,13 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class FirstScreen {
+class FirstScreen {
     JFrame frame;
-    JLabel image;
     JLabel text = new JLabel("PASSWORD MANAGER");
     JLabel text2 = new JLabel("Developer: Shruti Chandan");
     JProgressBar progressBar = new JProgressBar();
-    JLabel message = new JLabel(); // Creating a JLabel for displaying the message
+    JLabel message = new JLabel();
 
     FirstScreen() {
         createGUI();
@@ -45,11 +44,11 @@ public class FirstScreen {
     }
 
     public void addMessage() {
-        message.setBounds(0, 320, frame.getWidth(), 40); // Setting the size and location of the label
-        message.setForeground(Color.WHITE); // Setting foreground Color
-        message.setFont(new Font("Segoe UI", Font.PLAIN, 15)); // Setting font properties
+        message.setBounds(0, 320, frame.getWidth(), 40);
+        message.setForeground(Color.WHITE);
+        message.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         message.setHorizontalAlignment(SwingConstants.CENTER);
-        frame.add(message); // Adding label to the frame
+        frame.add(message);
     }
 
     public void addProgressBar() {
@@ -63,13 +62,12 @@ public class FirstScreen {
     }
 
     public void runningPBar() {
-        int i = 0; // Creating an integer variable and initializing it to 0
-
+        int i = 0;
         while (i <= 100) {
             try {
-                Thread.sleep(40); // Pausing execution for 40 milliseconds
-                progressBar.setValue(i); // Setting value of Progress Bar
-                message.setText("LOADING... (" + i + "%)"); // Setting text of the message JLabel
+                Thread.sleep(40);
+                progressBar.setValue(i);
+                message.setText("LOADING... (" + i + "%)");
                 i++;
                 if (i == 100)
                     frame.dispose();
@@ -77,6 +75,7 @@ public class FirstScreen {
                 e.printStackTrace();
             }
         }
+        new LoginWindow().setVisible(true); // Show login window after splash screen
     }
 
     public static void main(String[] args) {
